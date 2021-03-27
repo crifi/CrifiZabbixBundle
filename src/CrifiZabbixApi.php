@@ -52,9 +52,9 @@ class CrifiZabbixApi
     /**
      * @param string $method
      * @param array $params
-     * @return array
+     * @return mixed
      */
-    public function request(string $method, array $params): array {
+    public function request(string $method, array $params) {
         try {
             $response = HttpClient::create()->request('POST', $_ENV['ZABBIX_URL'], [
                 'json' => [
