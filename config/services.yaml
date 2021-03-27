@@ -1,0 +1,3 @@
+services:
+  crifi_zabbix.crifi_zabbix_client:
+    class: 'Crifi\CrifiZabbixBundle\CrifiZabbixClient'
