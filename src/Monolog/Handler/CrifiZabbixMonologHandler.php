@@ -3,6 +3,7 @@
 namespace Crifi\CrifiZabbixBundle\Monolog\Handler;
 
 use Disc\Zabbix\Sender;
+use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 
@@ -58,7 +59,8 @@ class CrifiZabbixMonologHandler extends AbstractProcessingHandler
     protected function send(array $records)
     {
         $sender = new Sender($this->zabbixHost, $this->zabbixPort);
-        $sender->addData($this->zabbixTrapperHost, $this->zabbixTrapperKey, $this->getHighestRecord($records));
+        $message = (new LineFormatter())->format($this->getHighestRecord($records));
+        $sender->addData($this->zabbixTrapperHost, $this->zabbixTrapperKey, $message);
         $sender->send();
     }
 
