@@ -6,7 +6,7 @@ use Disc\Zabbix\Sender;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 
-class ZabbixMonologHandler extends AbstractProcessingHandler
+class CrifiZabbixMonologHandler extends AbstractProcessingHandler
 {
     private $zabbixHost;
 
