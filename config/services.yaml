@@ -1,3 +1,11 @@
 services:
   crifi_zabbix.crifi_zabbix_client:
     class: 'Crifi\CrifiZabbixBundle\CrifiZabbixClient'
+
+  crifi_zabbix.crifi_zabbix_monolog_handler:
+    class: 'Crifi\CrifiZabbixBundle\Monolog\Handler\CrifiZabbixMonologHandler'
+    arguments:
+      $zabbixHost: '%env(ZABBIX_HOST)%'
+      $zabbixPort: '%env(ZABBIX_PORT)%'
+      $zabbixTrapperHost: '%env(ZABBIX_TRAPPER_HOST)%'
+      $zabbixTrapperKey: '%env(ZABBIX_TRAPPER_KEY)%'
