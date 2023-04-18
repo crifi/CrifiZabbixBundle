@@ -6,6 +6,7 @@ use Disc\Zabbix\Sender;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
+use Monolog\LogRecord;
 
 class CrifiZabbixMonologHandler extends AbstractProcessingHandler
 {
@@ -19,12 +20,13 @@ class CrifiZabbixMonologHandler extends AbstractProcessingHandler
 
     public function __construct(
         string $zabbixHost,
-        int $zabbixPort,
+        int    $zabbixPort,
         string $zabbixTrapperHost,
         string $zabbixTrapperKey,
-        $level = Logger::DEBUG,
-        bool $bubble = true
-    ) {
+               $level = Logger::DEBUG,
+        bool   $bubble = true
+    )
+    {
         $this->zabbixHost = $zabbixHost;
         $this->zabbixPort = $zabbixPort;
         $this->zabbixTrapperHost = $zabbixTrapperHost;
@@ -67,7 +69,7 @@ class CrifiZabbixMonologHandler extends AbstractProcessingHandler
     /**
      * @inheritDoc
      */
-    protected function write(array $record): void
+    protected function write(LogRecord $record): void
     {
         $this->send([$record]);
     }
